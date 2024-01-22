@@ -3,3 +3,10 @@ image: quadeare/gitpod-kubectl:latest
 vscode:
   extensions:
     - ms-azuretools.vscode-docker
+
+tasks:
+  - init: |
+      echo "Starting Minikube..."
+      minikube start --driver=none
+      kubectl cluster-info
+      echo "Minikube is ready and running."
