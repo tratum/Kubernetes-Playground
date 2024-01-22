@@ -4,7 +4,7 @@
 
 Ready to use Gitpod Kubectl workspace with usefull plugins.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://gitlab.com/quadeare/gitpod-kubectl.git)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/CNCF-Lahore/Kubernetes-Playground.git)
 
 ## How to use
 
