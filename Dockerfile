@@ -4,7 +4,7 @@ FROM ${GITPOD_IMAGE}
 ARG KUBECTL_VERSION
 
 ## Install Kubectl
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
+RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl" && \
     chmod +x ./kubectl && \
     sudo mv ./kubectl /usr/local/bin/kubectl && \
     mkdir ~/.kube
@@ -15,11 +15,11 @@ RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/s
     ./get_helm.sh
 
 ## Install Kustomize
-RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
 
 ## Install dependencies
 RUN sudo apt update && \
-    sudo apt install fzf
+    sudo apt install -y fzf
 
 ## Install easy ctx/ns switcher
 RUN git clone https://github.com/blendle/kns.git && \
@@ -49,3 +49,8 @@ RUN export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH" && \
 
 # Add aliases
 RUN echo 'alias k="kubectl"' >> /home/gitpod/.bashrc
+
+## Install Minikube
+RUN curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && \
+    chmod +x minikube && \
+    sudo mv minikube /usr/local/bin/
