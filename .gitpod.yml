@@ -1,4 +1,5 @@
-image: Dockerfile
+image:
+  file: Dockerfile
 
 tasks:
   - init: |
