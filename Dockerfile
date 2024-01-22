@@ -1,13 +1,15 @@
-ARG GITPOD_IMAGE=gitpod/workspace-base:latest
+ARG GITPOD_IMAGE=gitpod/workspace-full:latest
 FROM ${GITPOD_IMAGE}
 
-ARG KUBECTL_VERSION
+ARG KUBECTL_VERSION="v1.20.0"
+
+USER root
 
 ## Install Kubectl
 RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl" && \
     chmod +x ./kubectl && \
-    sudo mv ./kubectl /usr/local/bin/kubectl && \
-    mkdir ~/.kube
+    mv ./kubectl /usr/local/bin/kubectl && \
+    mkdir -p /home/gitpod/.kube
 
 ## Install Helm
 RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 && \
@@ -18,14 +20,14 @@ RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/s
 RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
 
 ## Install dependencies
-RUN sudo apt update && \
-    sudo apt install -y fzf
+RUN apt-get update && \
+    apt-get install -y fzf conntrack
 
 ## Install easy ctx/ns switcher
 RUN git clone https://github.com/blendle/kns.git && \
     cd kns/bin && \
-    chmod +x kns && sudo mv kns /usr/local/bin && \
-    chmod +x ktx && sudo mv ktx /usr/local/bin
+    chmod +x kns && mv kns /usr/local/bin && \
+    chmod +x ktx && mv ktx /usr/local/bin
 
 ## Install Krew
 RUN set -x; cd "$(mktemp -d)" && \
@@ -53,4 +55,10 @@ RUN echo 'alias k="kubectl"' >> /home/gitpod/.bashrc
 ## Install Minikube
 RUN curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && \
     chmod +x minikube && \
-    sudo mv minikube /usr/local/bin/
+    mv minikube /usr/local/bin/
+
+## Cleanup
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+USER gitpod

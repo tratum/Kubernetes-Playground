@@ -1,8 +1,4 @@
-image: quadeare/gitpod-kubectl:latest
-
-vscode:
-  extensions:
-    - ms-azuretools.vscode-docker
+image: Dockerfile
 
 tasks:
   - init: |
