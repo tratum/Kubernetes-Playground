@@ -2,6 +2,7 @@ ARG GITPOD_IMAGE=gitpod/workspace-full:latest
 FROM ${GITPOD_IMAGE}
 
 ARG KUBECTL_VERSION="v1.20.0"
+ARG CRICTL_VERSION="v1.24.1"
 
 USER root
 
@@ -22,6 +23,9 @@ RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/
 ## Install dependencies
 RUN apt-get update && \
     apt-get install -y fzf conntrack
+
+## Install crictl
+RUN curl -L "https://github.com/kubernetes-sigs/cri-tools/releases/download/${CRICTL_VERSION}/crictl-${CRICTL_VERSION}-linux-amd64.tar.gz" | tar -C /usr/local/bin -xz
 
 ## Install easy ctx/ns switcher
 RUN git clone https://github.com/blendle/kns.git && \
