@@ -24,9 +24,17 @@ RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/
 RUN apt-get update && \
     apt-get install -y fzf conntrack
 
+
 ## Install crictl
 RUN curl -L "https://github.com/kubernetes-sigs/cri-tools/releases/download/${CRICTL_VERSION}/crictl-${CRICTL_VERSION}-linux-amd64.tar.gz" | tar -C /usr/local/bin -xz
 
+# Install cri-dockerd
+RUN git clone https://github.com/Mirantis/cri-dockerd.git && \
+    cd cri-dockerd && \
+    git checkout ${CRI_DOCKERD_VERSION} && \
+    make && \
+    make install
+    
 ## Install easy ctx/ns switcher
 RUN git clone https://github.com/blendle/kns.git && \
     cd kns/bin && \
