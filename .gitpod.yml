@@ -1,8 +1,0 @@
-image: Dockerfile
-
-tasks:
-  - init: |
-      echo "Starting Minikube..."
-      minikube start --driver=none
-      kubectl cluster-info
-      echo "Minikube is ready and running."
