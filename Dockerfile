@@ -1,4 +1,4 @@
-ARG GITPOD_IMAGE=gitpod/workspace-full:latest
+ARG GITPOD_IMAGE=gitpod/workspace-base:latest
 FROM ${GITPOD_IMAGE}
 
 ARG KUBECTL_VERSION="v1.20.0"
