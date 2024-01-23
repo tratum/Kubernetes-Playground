@@ -62,7 +62,5 @@
 	// Use 'postStartCommand' to run commands after the container starts.
 	"postStartCommand": "/bin/bash -c .devcontainer/post-start.sh",
 
-	"postCreateCommand": "/bin/bash -c 'echo \"- [ ] Task 1 @1h\" > /workspace/TODO.md && echo \"- [ ] Task 2 @1h\" >> /workspace/TODO.md && .devcontainer/lab-created.sh'",
-
 	"postCreateCommand":  "/bin/bash -c .devcontainer/lab-created.sh"
 }
