@@ -1,5 +1,5 @@
 {
-	"name": "Kubernetes-in-Codespaces",
+	"name": "Kubernetes Playground",
 	"dockerFile": "Dockerfile",
 
 	// do not change these if you want Docker in Docker support
@@ -60,5 +60,7 @@
 	"postCreateCommand": "/bin/bash -c .devcontainer/post-create.sh",
 
 	// Use 'postStartCommand' to run commands after the container starts.
-	"postStartCommand": "/bin/bash -c .devcontainer/post-start.sh"
+	"postStartCommand": "/bin/bash -c .devcontainer/post-start.sh",
+
+	"postCreateCommand":  "/bin/bash -c .devcontainer/lab-created.sh"
 }
