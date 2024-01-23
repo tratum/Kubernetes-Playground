@@ -48,7 +48,7 @@
 		"ms-azuretools.vscode-dapr",
 		"ms-kubernetes-tools.vscode-kubernetes-tools",
 		"davidanson.vscode-markdownlint",
-		"gruntfuggly.todo-tree",
+		"fabiospampinato.vscode-todo-plus",
 		"mutantdino.resourcemonitor",
 		"humao.rest-client"
 	],
@@ -61,6 +61,8 @@
 
 	// Use 'postStartCommand' to run commands after the container starts.
 	"postStartCommand": "/bin/bash -c .devcontainer/post-start.sh",
+
+	"postCreateCommand": "/bin/bash -c 'echo \"- [ ] Task 1 @1h\" > /workspace/TODO.md && echo \"- [ ] Task 2 @1h\" >> /workspace/TODO.md && .devcontainer/lab-created.sh'",
 
 	"postCreateCommand":  "/bin/bash -c .devcontainer/lab-created.sh"
 }
