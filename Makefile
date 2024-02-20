@@ -49,11 +49,6 @@ deploy :
 	@kubectl wait pod -n monitoring --for condition=ready --all --timeout=30s
 	@kubectl wait pod -n logging fluentbit --for condition=ready --timeout=30s
 
-	# deploy WebV after the app starts
-	@kubectl wait pod ngsa-memory --for condition=ready --timeout=30s
-	@kubectl apply -f deploy/webv
-	@kubectl wait pod webv --for condition=ready --timeout=30s
-
 	# display pod status
 	@kubectl get po -A | grep "default\|monitoring\|logging"
 
