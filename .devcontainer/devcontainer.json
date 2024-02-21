@@ -27,7 +27,8 @@
 		30000,
 		30080,
 		30088,
-		32000
+		32000,
+		80
 	],
 
 	// add labels
@@ -39,6 +40,7 @@
 		"30080": { "label": "ngsa-app" },
 		"30088": { "label": "WebV" },
 		"32000": { "label": "Grafana" },
+		"80":{ "label": "NodeApp" }
 	},
 
 	// Install extensions
