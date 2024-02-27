@@ -21,9 +21,7 @@ create : delete
 
 	@k3d cluster create --registry-use k3d-registry.localhost:5500 --config deploy/k3d.yaml --k3s-server-arg "--no-deploy=traefik" --k3s-server-arg "--no-deploy=servicelb"
 
-	# wait for cluster to be ready
-	@kubectl wait node --for condition=ready --all --timeout=60s
-	@sleep 5
+	@sleep 10
 	@kubectl wait pod -A --all --for condition=ready --timeout=60s
 
 deploy :
