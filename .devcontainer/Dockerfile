@@ -1,3 +1,5 @@
+# Image : https://github.com/orgs/CNCF-Lahore/packages
+
 FROM ghcr.io/cncf-lahore/k3d:latest
 
 # some images require specific values
