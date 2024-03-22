@@ -28,6 +28,9 @@ ports:
   - port: 30100:30100
     nodeFilters:
       - server[0]
+  - port: 30007:30007
+    nodeFilters:
+      - server[0]
 
 options:
   k3d:
