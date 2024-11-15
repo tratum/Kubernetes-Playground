@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: testreplicaprod
+spec:
+  replicas: 2
+  selector: 
+    team: dev
+  template: 
+    metadata: 
+      name: prodRC
+      labels: 
+        team: dev
+    spec: 
+      containers:
+      - name: c00
+        image: ubuntu
+        command: ["/bin/bash","-c","apt-get update; while true; do echo welcome; sleep 5; done"]

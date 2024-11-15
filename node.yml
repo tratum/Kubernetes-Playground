@@ -1,15 +1,17 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: web
+  name: node
   labels:
     team: dev
 spec:
   containers:
-  - name: web
+  - name: node
     image: ubuntu
     resources:
       limits:
         memory: "512Mi"
         cpu: "1000m"
     command: ["/bin/bash","-c","apt-get update; while true; do echo welcome; sleep 5;done"]
+    nodeSelector: 
+      hardware: aws
