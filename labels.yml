@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web
+  labels:
+    team: dev
+spec:
+  containers:
+  - name: web
+    image: ubuntu
+    resources:
+      limits:
+        memory: "512Mi"
+        cpu: "1000m"
+    command: ["/bin/bash","-c","apt-get update; apt-get install apache2; service apache2 start; service apache2 enable"]

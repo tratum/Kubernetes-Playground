@@ -1,0 +1,9 @@
+kind: Pod
+apiVersion: v1
+metadata: 
+  name: c01
+spec: 
+  containers:
+  - name: c01
+    image: centos
+    command: ["/bin/bash","-c","apt-get update;"]
